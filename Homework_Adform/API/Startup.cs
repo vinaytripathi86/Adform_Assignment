@@ -9,6 +9,7 @@ using Homework_Adform.CommonLibrary.Models;
 using Homework_Adform.DAL;
 using Homework_Adform.DAL.DBContexts;
 using Homework_Adform.Services;
+using Homework_Adform.TodoAPI.Filters;
 using Homework_Adform.TodoAPI.Graphql;
 using Homework_Adform.TodoAPI.Graphql.ModelTypes;
 using Homework_Adform.TodoAPI.Handlers;
@@ -19,6 +20,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,6 +48,7 @@ namespace Homework_Adform
         {
             services.AddDbContext<HomeworkDBContext>(opts => opts.UseSqlServer(ConnectionStringConnectionHelper.GetConnectionString(Configuration)));
             services.AddAutoMapper(c => c.AddProfile<AutoMapping>(), typeof(Startup));
+            services.AddControllers(p => p.RespectBrowserAcceptHeader = true).AddXmlDataContractSerializerFormatters();
             services.AddHttpContextAccessor();
             services.AddGraphQL(s => SchemaBuilder.New()
                 .AddServices(s)
@@ -97,12 +100,6 @@ namespace Homework_Adform
                 options.UpdateTraceIdentifier = false;
             });
 
-
-            services.AddControllers(config =>
-            {
-                config.RespectBrowserAcceptHeader = true;
-            }).AddXmlDataContractSerializerFormatters();
-
             services.AddApiVersioning(x =>
             {
                 x.DefaultApiVersion = new ApiVersion(1, 0);
@@ -144,7 +141,7 @@ namespace Homework_Adform
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
                 });
-
+                p.OperationFilter<AddRequiredHeaderParameter>();
                 p.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -184,14 +181,7 @@ namespace Homework_Adform
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Adform Assignment API");
-                c.RoutePrefix = string.Empty;
-            });
+            app.UseRouting();            
 
             app.UseMiddleware<JwtMiddleware>();
 
@@ -201,6 +191,12 @@ namespace Homework_Adform
             });
 
             app.UseGraphQL().UsePlayground();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Adform Assignment API");
+                c.RoutePrefix = string.Empty;
+            });
         }
     }
 }

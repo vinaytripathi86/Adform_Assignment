@@ -16,7 +16,7 @@ namespace Homework_Adform.CommonLibrary.Models.DBModels
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public List<TodoListDbModel> Lists { get; set; }
-        public List<LabelDbModel> Labels { get; set; }
+        public virtual List<TodoListDbModel> Lists { get; set; }
+        public virtual List<LabelDbModel> Labels { get; set; }
     }
 }

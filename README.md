@@ -12,12 +12,20 @@ It also logs each and every request/response or error if any.
 Added support for GraphQL and unit test cases.
 
 #How to run application
-Clone repo: git clone https://github.com/vinaytripathi86/Adform_Assignment.git
 
-Go the folder and run following commands
+Step 1: Clone repo: git clone https://github.com/vinaytripathi86/Adform_Assignment.git
 
+Step 2: Go the folder "Homework_Adform" and run
 dotnet restore
 
+Step 3: Go the folder Homework_Adform\API and run following commands
 dotnet run
 
 Navigate to http://localhost:5000/ in a browser to play with the Swagger UI.
+
+#Authorization
+Send token in "Authorization" header as "Bearer <token>" (Example: "Bearer sampletoken")
+
+#Note
+Search field is available in PaginationParameters type.
+

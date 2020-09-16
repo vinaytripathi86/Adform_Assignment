@@ -12,14 +12,14 @@ namespace Homework_Adform.CommonLibrary.Models.DBModels
         public string Notes { get; set; }
         public long CreatedBy { get; set; }
         [ForeignKey("CreatedBy")]
-        public UserDbModel User { get; set; }
+        public virtual UserDbModel User { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public long ListId { get; set; }
         [ForeignKey("ListId")]
-        public TodoListDbModel List { get; set; }
+        public virtual TodoListDbModel List { get; set; }
         public long? LabelId { get; set; }
         [ForeignKey("LabelId")]
-        public LabelDbModel Label { get; set; }
+        public virtual LabelDbModel Label { get; set; }
     }
 }

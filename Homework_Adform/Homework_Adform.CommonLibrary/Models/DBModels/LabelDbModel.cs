@@ -14,6 +14,6 @@ namespace Homework_Adform.CommonLibrary.Models.DBModels
         public DateTime? UpdatedDate { get; set; }
         public long CreatedBy { get; set; }
         [ForeignKey("CreatedBy")]
-        public UserDbModel User { get; set; }
+        public virtual UserDbModel User { get; set; }
     }
 }
