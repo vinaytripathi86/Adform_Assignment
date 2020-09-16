@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200913183610_Homework_Adform.DAL.DBContexts.HomeworkDBContext.cs" />
+    <Compile Remove="Migrations\20200913183610_Homework_Adform.DAL.DBContexts.HomeworkDBContext.Designer.cs" />
+    <Compile Remove="Migrations\20200913185607_Homework_Adform.DAL.DBContexts.HomeworkDBContext.cs" />
+    <Compile Remove="Migrations\20200913185607_Homework_Adform.DAL.DBContexts.HomeworkDBContext.Designer.cs" />
+    <Compile Remove="Migrations\20200913190519_Homework_Adform.DAL.DBContexts.HomeworkDBContext.cs" />
+    <Compile Remove="Migrations\20200913190519_Homework_Adform.DAL.DBContexts.HomeworkDBContext.Designer.cs" />
+    <Compile Remove="Migrations\20200913191228_Homework_Adform.DAL.DBContexts.HomeworkDBContext.cs" />
+    <Compile Remove="Migrations\20200913191228_Homework_Adform.DAL.DBContexts.HomeworkDBContext.Designer.cs" />
+    <Compile Remove="Migrations\20200913191843_Homework_Adform.DAL.DBContexts.HomeworkDBContext.cs" />
+    <Compile Remove="Migrations\20200913191843_Homework_Adform.DAL.DBContexts.HomeworkDBContext.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Dapper.ParameterExtensions" Version="2018.12.7.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Homework_Adform.CommonLibrary\Homework_Adform.CommonLibrary.csproj" />
+  </ItemGroup>
+
+</Project>
