@@ -17,6 +17,7 @@ Clone repo: git clone https://github.com/vinaytripathi86/Adform_Assignment.git
 Go the folder and run following commands
 
 dotnet restore
+
 dotnet run
 
 Navigate to http://localhost:5000/ in a browser to play with the Swagger UI.
